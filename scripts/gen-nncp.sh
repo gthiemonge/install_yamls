@@ -145,6 +145,21 @@ spec:
       vlan:
         base-iface: ${INTERFACE}
         id: $((${VLAN_START}+$((${VLAN_STEP}*2))))
+    - description: lb-mgmt-net vlan interface
+      ipv4:
+        address:
+        - ip: 172.23.0.${IP_ADDRESS_SUFFIX}
+          prefix-length: 24
+        enabled: true
+        dhcp: false
+      ipv6:
+        enabled: false
+      name: ${INTERFACE}.$((${VLAN_START}+$((${VLAN_STEP}*3))))
+      state: up
+      type: vlan
+      vlan:
+        base-iface: ${INTERFACE}
+        id: $((${VLAN_START}+$((${VLAN_STEP}*3))))
     - description: Configuring ${INTERFACE}
       ipv4:
         address:
